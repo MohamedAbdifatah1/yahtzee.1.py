@@ -1,0 +1,13 @@
+import random
+
+class Die:
+    def __init__(self):
+        self.value = random.randint(1, 6)
+
+    def __str__(self):
+        return f"Die shows {self.value}"
+
+    @classmethod
+    def roll(cls):
+        return random.randint(1, 6)
+
