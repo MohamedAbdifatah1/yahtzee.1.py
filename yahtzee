@@ -1,0 +1,23 @@
+from die import Die
+
+class YahtzeeMainClass:
+    def __init__(self):
+        self.dice = [Die() for _ in range(5)]
+        self.play_again = True
+
+        while self.play_again:
+            print("Welcome to Yahtzee!")
+            for _ in range(3):
+                print(f"Rolling dice...")
+                for die in self.dice:
+                    die.roll()
+                    print(f"{die}")
+                if all(die.value == self.dice[0].value for die in self.dice):
+                    print("You got YAHTZEE!")
+                    break
+                if input("Want to throw again? (y for yes, anything else for no) ") != "y":
+                    self.play_again = False
+                    break
+
+if __name__ == '__main__':
+    YahtzeeMainClass()
