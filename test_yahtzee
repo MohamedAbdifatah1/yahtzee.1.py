@@ -1,0 +1,29 @@
+import random
+
+class Die:
+    def __init__(self):
+        self.value = random.randint(1, 6)
+
+    def __str__(self):
+        return f"Die shows {self.value}"
+
+    @classmethod
+    def roll(cls):
+        return random.randint(1, 6)
+
+def main():
+    print("Welcome to Yahtzee!")
+    dice = [Die() for _ in range(5)]
+    while True:
+        print("Rolling dice...")
+        for die in dice:
+            die.roll()
+            print(f"{die}")
+        if all(die.value == dice[0].value for die in dice):
+            print("You got YAHTZEE!")
+            break
+        if input("Want to throw again? (y for yes, anything else for no) ") != "y":
+            break
+
+if __name__ == '__main__':
+    main()
